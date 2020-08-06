@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myapp</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<b><h2>ArtistiqueDecors</h2></b>
+	Doing what we love and we love what we are doing.
+This is our happy little world ✨
+
+<div class="row">
+	{% for i in posts %}
+		<div class="col-md-4">
+		<center><br><b><h4><a href ="{% url 'myapp:detail' i.pk %}">{{i.title}}</a></h4></b>
+		<!-- to ge key (key: {{i.pk}}) -->
+		<img src="{{i.image.url}}" height="250" ><br>
+		Created {{i.created_at}} by<b> {{i.user}}</b><br>
+		Updated {{i.updated_at}}<br>
+		{{i.likes}} likes<br></center>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>
